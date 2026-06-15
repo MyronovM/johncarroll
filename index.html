@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>John Carroll Driving School · Tralee, Kerry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FDF8F0;
+    --cream-dark: #F5EDD8;
+    --warm-brown: #6B3A2A;
+    --mid-brown: #9B5A3A;
+    --accent: #D4813A;
+    --accent-light: #F5C882;
+    --green: #2D5A3D;
+    --green-light: #EAF2EC;
+    --text: #2C1A0E;
+    --text-muted: #7A5840;
+    --border: rgba(107,58,42,0.15);
+    --white: #FFFFFF;
+    --shadow: 0 2px 20px rgba(107,58,42,0.1);
+    --shadow-lg: 0 8px 40px rgba(107,58,42,0.15);
+    --radius: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 32px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(253,248,240,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--warm-brown);
+    text-decoration: none;
+    line-height: 1.2;
+  }
+  .nav-logo span { display: block; font-size: 0.7rem; font-weight: 400; color: var(--text-muted); font-family: 'DM Sans', sans-serif; letter-spacing: 0.08em; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--warm-brown); }
+  .nav-cta {
+    background: var(--warm-brown); color: white;
+    padding: 0.5rem 1.25rem; border-radius: 999px;
+    text-decoration: none; font-size: 0.88rem; font-weight: 600;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--mid-brown); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 92vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 5rem 4rem 5rem 5rem;
+    background: var(--cream);
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--green-light); color: var(--green);
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 6px 14px;
+    border-radius: 999px; margin-bottom: 1.5rem;
+    width: fit-content;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.6rem; }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.4rem, 4vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--warm-brown);
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero-sub {
+    font-size: 1.05rem; color: var(--text-muted);
+    max-width: 440px; margin-bottom: 2.5rem; line-height: 1.7;
+  }
+  .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--warm-brown); color: white;
+    padding: 0.85rem 2rem; border-radius: 999px;
+    text-decoration: none; font-weight: 600; font-size: 0.95rem;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(107,58,42,0.25);
+  }
+  .btn-primary:hover { background: var(--mid-brown); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(107,58,42,0.3); }
+  .btn-outline {
+    border: 1.5px solid var(--border); color: var(--warm-brown);
+    padding: 0.85rem 2rem; border-radius: 999px;
+    text-decoration: none; font-weight: 500; font-size: 0.95rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--warm-brown); background: rgba(107,58,42,0.04); }
+
+  .hero-stats {
+    display: flex; gap: 2rem; margin-top: 3rem;
+    padding-top: 2rem; border-top: 1px solid var(--border);
+  }
+  .stat-item { text-align: left; }
+  .stat-num { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 700; color: var(--warm-brown); display: block; }
+  .stat-label { font-size: 0.8rem; color: var(--text-muted); }
+
+  .hero-right {
+    background: var(--warm-brown);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-img-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(160deg, #8B4B35 0%, #5A2D1E 60%, #3D1E10 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 1rem;
+  }
+  .hero-card-float {
+    position: absolute; bottom: 2rem; left: 2rem;
+    background: white; border-radius: var(--radius-lg); padding: 1rem 1.25rem;
+    box-shadow: var(--shadow-lg); min-width: 200px;
+  }
+  .hero-card-float .card-label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.25rem; }
+  .hero-card-float .card-val { font-family: 'Fraunces', serif; font-size: 1.4rem; color: var(--green); font-weight: 700; }
+  .hero-card-float .card-sub { font-size: 0.8rem; color: var(--text-muted); }
+  .stars { color: var(--accent); font-size: 0.9rem; margin-bottom: 0.25rem; }
+
+  .instructor-silhouette {
+    width: 280px; height: 380px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50% 50% 0 0 / 60% 60% 0 0;
+    position: relative; overflow: hidden;
+    border: 3px solid rgba(255,255,255,0.12);
+  }
+  .instructor-face {
+    position: absolute; top: 28px; left: 50%; transform: translateX(-50%);
+    width: 80px; height: 80px; border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+  }
+  .instructor-body {
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 160px; height: 220px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px 20px 0 0;
+  }
+  .hero-text-overlay {
+    position: absolute; top: 2rem; right: 2rem;
+    font-family: 'Fraunces', serif; font-style: italic;
+    color: rgba(255,255,255,0.15); font-size: 7rem; font-weight: 700;
+    line-height: 1; pointer-events: none; user-select: none;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 5rem 5rem; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif; font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700; color: var(--warm-brown); line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .section-sub { color: var(--text-muted); max-width: 520px; font-size: 1rem; line-height: 1.7; }
+
+  /* ── WHY CHOOSE ── */
+  #why { background: var(--white); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+  }
+  .why-left { }
+  .why-left img { width: 100%; border-radius: var(--radius-xl); }
+  .why-img-placeholder {
+    width: 100%; aspect-ratio: 4/3;
+    background: linear-gradient(135deg, var(--cream-dark) 0%, #E8D5B5 100%);
+    border-radius: var(--radius-xl);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 0.5rem;
+    border: 2px dashed var(--accent-light);
+    color: var(--text-muted); font-size: 0.9rem;
+  }
+  .why-img-placeholder span { font-size: 2.5rem; }
+  .features-list { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1rem; }
+  .feature-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .feature-icon {
+    width: 44px; height: 44px; border-radius: var(--radius);
+    background: var(--cream); display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0; border: 1px solid var(--border);
+  }
+  .feature-title { font-weight: 600; font-size: 0.95rem; color: var(--text); margin-bottom: 0.2rem; }
+  .feature-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; }
+
+  /* ── BOOKING ── */
+  #booking { background: var(--cream); }
+  .booking-wrapper {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: 3rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  .booking-left h3 {
+    font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 700;
+    color: var(--warm-brown); margin-bottom: 0.5rem;
+  }
+  .booking-left p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .lesson-options { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
+  .lesson-option {
+    border: 1.5px solid var(--border); border-radius: var(--radius);
+    padding: 1rem 1.25rem; cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .lesson-option:hover, .lesson-option.selected {
+    border-color: var(--accent); background: rgba(212,129,58,0.04);
+  }
+  .lesson-option.selected { border-color: var(--warm-brown); background: rgba(107,58,42,0.05); }
+  .lesson-name { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+  .lesson-duration { font-size: 0.8rem; color: var(--text-muted); }
+  .lesson-price { font-family: 'Fraunces', serif; font-weight: 700; color: var(--warm-brown); font-size: 1.1rem; }
+  .lesson-badge {
+    background: var(--green); color: white;
+    font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 999px;
+    letter-spacing: 0.04em;
+  }
+
+  .calendar-mini { }
+  .cal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .cal-header span { font-weight: 600; font-size: 0.95rem; color: var(--text); }
+  .cal-nav {
+    background: none; border: 1px solid var(--border); border-radius: 8px;
+    width: 32px; height: 32px; cursor: pointer; display: flex; align-items: center;
+    justify-content: center; color: var(--text-muted); font-size: 1rem;
+    transition: border-color 0.2s; line-height: 1;
+  }
+  .cal-nav:hover { border-color: var(--warm-brown); color: var(--warm-brown); }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-bottom: 1rem; }
+  .cal-day-label { font-size: 0.72rem; color: var(--text-muted); text-align: center; padding: 4px 0; font-weight: 600; }
+  .cal-day {
+    aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+    border-radius: 8px; font-size: 0.82rem; cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    border: 1.5px solid transparent;
+  }
+  .cal-day:hover:not(.empty):not(.past) { background: var(--cream-dark); }
+  .cal-day.available { color: var(--text); }
+  .cal-day.selected { background: var(--warm-brown); color: white; border-color: var(--warm-brown); }
+  .cal-day.past { color: var(--border); cursor: default; }
+  .cal-day.empty { cursor: default; }
+  .cal-day.today { border-color: var(--accent); }
+
+  .time-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 1.5rem; }
+  .time-slot {
+    border: 1.5px solid var(--border); border-radius: 8px; padding: 7px;
+    text-align: center; font-size: 0.8rem; cursor: pointer; color: var(--text);
+    transition: all 0.15s;
+  }
+  .time-slot:hover, .time-slot.selected { border-color: var(--warm-brown); background: rgba(107,58,42,0.05); color: var(--warm-brown); font-weight: 600; }
+  .time-slot.full { color: var(--border); cursor: default; border-color: transparent; background: var(--cream); }
+
+  .booking-right h3 {
+    font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 700;
+    color: var(--warm-brown); margin-bottom: 1.5rem;
+  }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; border: 1.5px solid var(--border); border-radius: var(--radius);
+    padding: 0.7rem 1rem; font-size: 0.9rem; font-family: 'DM Sans', sans-serif;
+    color: var(--text); background: white; outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--warm-brown); }
+  .form-group textarea { resize: vertical; min-height: 80px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .booking-summary {
+    background: var(--cream); border-radius: var(--radius); padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem; border: 1px solid var(--border);
+    font-size: 0.85rem;
+  }
+  .booking-summary .sum-row { display: flex; justify-content: space-between; padding: 3px 0; color: var(--text-muted); }
+  .booking-summary .sum-row strong { color: var(--text); }
+  .booking-summary .sum-total { border-top: 1px solid var(--border); margin-top: 8px; padding-top: 8px; font-weight: 700; color: var(--warm-brown); font-size: 0.95rem; }
+  .submit-btn {
+    width: 100%; background: var(--warm-brown); color: white; border: none;
+    padding: 0.9rem 2rem; border-radius: 999px; font-size: 0.95rem; font-weight: 600;
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s, transform 0.15s;
+    box-shadow: 0 4px 16px rgba(107,58,42,0.25);
+  }
+  .submit-btn:hover { background: var(--mid-brown); transform: translateY(-2px); }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background: var(--warm-brown); }
+  #testimonials .section-label { color: var(--accent-light); }
+  #testimonials .section-title { color: white; }
+  #testimonials .section-sub { color: rgba(255,255,255,0.7); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+  .testi-card {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius-lg); padding: 1.75rem;
+    transition: background 0.2s;
+  }
+  .testi-card:hover { background: rgba(255,255,255,0.1); }
+  .testi-stars { color: var(--accent-light); font-size: 0.85rem; margin-bottom: 1rem; }
+  .testi-text { color: rgba(255,255,255,0.85); font-size: 0.9rem; line-height: 1.7; margin-bottom: 1.25rem; font-style: italic; }
+  .testi-name { font-weight: 600; font-size: 0.88rem; color: white; }
+  .testi-detail { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2.5rem; align-items: start; }
+  .contact-info { }
+  .contact-item {
+    display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.75rem;
+  }
+  .contact-icon {
+    width: 48px; height: 48px; border-radius: var(--radius); flex-shrink: 0;
+    background: var(--cream); display: flex; align-items: center;
+    justify-content: center; font-size: 1.3rem; border: 1px solid var(--border);
+  }
+  .contact-label { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .contact-value { font-size: 1rem; font-weight: 600; color: var(--text); }
+  .contact-value a { color: var(--warm-brown); text-decoration: none; }
+  .contact-value a:hover { text-decoration: underline; }
+  .map-placeholder {
+    aspect-ratio: 4/3; border-radius: var(--radius-xl); overflow: hidden;
+    background: linear-gradient(135deg, #E8D5B5, #D4C4A0);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 0.5rem;
+    border: 2px dashed var(--accent-light); color: var(--text-muted);
+    font-size: 0.88rem; margin-top: 1.5rem;
+  }
+
+  .contact-form {
+    background: var(--cream); border-radius: var(--radius-xl); padding: 2.5rem;
+    border: 1px solid var(--border);
+  }
+  .contact-form h3 {
+    font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700;
+    color: var(--warm-brown); margin-bottom: 1.25rem;
+  }
+
+  /* ── SUCCESS OVERLAY ── */
+  .success-overlay {
+    display: none; position: fixed; inset: 0; z-index: 999;
+    background: rgba(44,26,14,0.5); backdrop-filter: blur(4px);
+    align-items: center; justify-content: center;
+  }
+  .success-overlay.show { display: flex; }
+  .success-modal {
+    background: white; border-radius: var(--radius-xl); padding: 3rem;
+    max-width: 440px; width: 90%; text-align: center;
+    box-shadow: var(--shadow-lg); animation: popIn 0.3s ease;
+  }
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.9) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .success-icon { font-size: 3rem; margin-bottom: 1rem; }
+  .success-modal h2 { font-family: 'Fraunces', serif; color: var(--warm-brown); font-size: 1.6rem; margin-bottom: 0.5rem; }
+  .success-modal p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+  .success-modal button {
+    background: var(--warm-brown); color: white; border: none;
+    padding: 0.75rem 2rem; border-radius: 999px; font-size: 0.9rem; font-weight: 600;
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s;
+  }
+  .success-modal button:hover { background: var(--mid-brown); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--text);
+    color: rgba(255,255,255,0.6);
+    padding: 3rem 5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  footer .footer-brand {
+    font-family: 'Fraunces', serif; font-size: 1.1rem; color: white; font-weight: 700;
+  }
+  footer .footer-links { display: flex; gap: 1.5rem; }
+  footer .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  footer .footer-links a:hover { color: white; }
+  footer .footer-copy { font-size: 0.8rem; }
+
+  /* ── NOTIFICATION BANNER ── */
+  .demo-banner {
+    background: var(--green); color: white; text-align: center;
+    padding: 10px 2rem; font-size: 0.82rem; font-weight: 500;
+  }
+  .demo-banner strong { font-weight: 700; }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 300px; }
+    section { padding: 3rem 1.5rem; }
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .why-grid, .booking-wrapper, .contact-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; }
+    .hero-left { padding: 3rem 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  🎨 <strong>Demo Redesign</strong> — This is a concept rebuild of traleedrivinglessons.ie to illustrate potential improvements
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    John Carroll
+    <span>Driving School · Tralee, Kerry</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#booking">Book a Lesson</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#booking" class="nav-cta">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:0;">
+  <div class="hero-left">
+    <div class="hero-badge">No Waiting List — Start This Week</div>
+    <h1>Learn to drive with <em>confidence</em> in Kerry</h1>
+    <p class="hero-sub">Patient, friendly EDT lessons with over 10 years of experience. John has helped more than 2,000 students pass their test — first time.</p>
+    <div class="hero-actions">
+      <a href="#booking" class="btn-primary">Book a Lesson</a>
+      <a href="tel:0871307075" class="btn-outline">📞 087 130 7075</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">10+</span>
+        <span class="stat-label">Years teaching</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">2,000+</span>
+        <span class="stat-label">Students passed</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">5★</span>
+        <span class="stat-label">Average review</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-placeholder">
+      <div style="font-size:5rem;">🚗</div>
+      <p style="color:rgba(255,255,255,0.5);font-size:0.8rem;text-align:center;padding:0 2rem;">
+        Replace with a warm photo of John with a student
+      </p>
+    </div>
+    <div class="hero-text-overlay">Kerry</div>
+    <div class="hero-card-float">
+      <div class="stars">★★★★★</div>
+      <div class="card-label">Latest Review</div>
+      <div class="card-val">Passed first time!</div>
+      <div class="card-sub">— Katie C., Tralee</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="why">
+  <div class="section-label">Why choose John</div>
+  <div class="section-title">Driving lessons that actually<br>prepare you for the test</div>
+  <div class="why-grid">
+    <div class="why-left">
+      <div class="why-img-placeholder">
+        <span>📸</span>
+        <p>Photo of John teaching in the car</p>
+      </div>
+    </div>
+    <div class="why-right">
+      <p class="section-sub" style="margin-bottom:1.75rem;">
+        John's approach is calm, encouraging, and highly structured around what the RSA actually tests. He tailors every lesson to you — not a one-size-fits-all script.
+      </p>
+      <div class="features-list">
+        <div class="feature-item">
+          <div class="feature-icon">🧘</div>
+          <div>
+            <div class="feature-title">Patient with nervous learners</div>
+            <div class="feature-desc">Plenty of experience with anxious students. John moves at your pace, never rushing or pressuring.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🎯</div>
+          <div>
+            <div class="feature-title">Test-focused technique</div>
+            <div class="feature-desc">He knows exactly what testers look for and trains you to avoid the faults that cause failures.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📋</div>
+          <div>
+            <div class="feature-title">End-of-lesson feedback</div>
+            <div class="feature-desc">Every lesson ends with clear, specific notes on what to focus on before next time.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🗓️</div>
+          <div>
+            <div class="feature-title">Flexible scheduling</div>
+            <div class="feature-desc">Morning, afternoon, and weekend slots available. No waiting list — start this week.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">✅</div>
+          <div>
+            <div class="feature-title">EDT certified instructor</div>
+            <div class="feature-desc">Fully RSA approved for Essential Driver Training. All EDT logs completed correctly.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="section-label">Online booking</div>
+  <div class="section-title">Pick a slot that works for you</div>
+  <p class="section-sub">Choose your lesson type, pick a date and time, then fill in your details. John will confirm within a few hours.</p>
+
+  <div class="booking-wrapper">
+    <!-- LEFT: Lesson type + calendar -->
+    <div class="booking-left">
+      <h3>1. Choose your lesson</h3>
+      <p>Select a lesson package below</p>
+      <div class="lesson-options">
+        <div class="lesson-option selected" onclick="selectLesson(this, '€35')">
+          <div>
+            <div class="lesson-name">Standard EDT Lesson</div>
+            <div class="lesson-duration">60 minutes · Trainee car</div>
+          </div>
+          <div class="lesson-price">€35</div>
+        </div>
+        <div class="lesson-option" onclick="selectLesson(this, '€60')">
+          <div>
+            <div class="lesson-name">Double Lesson</div>
+            <div class="lesson-duration">120 minutes · Best value</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="lesson-price">€60</div>
+            <div class="lesson-badge">Save €10</div>
+          </div>
+        </div>
+        <div class="lesson-option" onclick="selectLesson(this, '€30')">
+          <div>
+            <div class="lesson-name">Pre-Test Refresher</div>
+            <div class="lesson-duration">60 minutes · Test prep focus</div>
+          </div>
+          <div class="lesson-price">€30</div>
+        </div>
+      </div>
+
+      <h3 style="margin-bottom:1rem; font-size:1.1rem; color:var(--warm-brown); font-family:'Fraunces',serif;">2. Pick a date</h3>
+      <div class="calendar-mini">
+        <div class="cal-header">
+          <button class="cal-nav" onclick="changeMonth(-1)">‹</button>
+          <span id="cal-title">June 2026</span>
+          <button class="cal-nav" onclick="changeMonth(1)">›</button>
+        </div>
+        <div class="cal-grid" id="cal-grid"></div>
+      </div>
+
+      <h3 style="margin:1rem 0 0.75rem; font-size:1.1rem; color:var(--warm-brown); font-family:'Fraunces',serif;">3. Pick a time</h3>
+      <div class="time-slots" id="time-slots">
+        <div class="time-slot" onclick="selectTime(this)">9:00 AM</div>
+        <div class="time-slot" onclick="selectTime(this)">10:00 AM</div>
+        <div class="time-slot full">11:00 AM</div>
+        <div class="time-slot" onclick="selectTime(this)">1:00 PM</div>
+        <div class="time-slot full">2:00 PM</div>
+        <div class="time-slot" onclick="selectTime(this)">3:00 PM</div>
+        <div class="time-slot" onclick="selectTime(this)">4:00 PM</div>
+        <div class="time-slot full">5:00 PM</div>
+        <div class="time-slot" onclick="selectTime(this)">6:00 PM</div>
+      </div>
+      <p style="font-size:0.75rem;color:var(--text-muted);">Greyed out slots are already booked</p>
+    </div>
+
+    <!-- RIGHT: Form + summary -->
+    <div class="booking-right">
+      <h3>4. Your details</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First name</label>
+          <input type="text" placeholder="Aoife" id="fname"/>
+        </div>
+        <div class="form-group">
+          <label>Last name</label>
+          <input type="text" placeholder="Murphy" id="lname"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Phone number</label>
+        <input type="tel" placeholder="087 123 4567" id="phone"/>
+      </div>
+      <div class="form-group">
+        <label>Email address</label>
+        <input type="email" placeholder="aoife@email.com" id="email"/>
+      </div>
+      <div class="form-group">
+        <label>Experience level</label>
+        <select id="exp">
+          <option>Complete beginner</option>
+          <option>Have some lessons already</option>
+          <option>Returning after a break</option>
+          <option>Pre-test refresher only</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Anything John should know? (optional)</label>
+        <textarea placeholder="e.g. I'm quite anxious, I need morning slots only..."></textarea>
+      </div>
+
+      <div class="booking-summary" id="booking-summary">
+        <div class="sum-row"><span>Lesson type</span><strong id="sum-type">Standard EDT Lesson</strong></div>
+        <div class="sum-row"><span>Date</span><strong id="sum-date">—</strong></div>
+        <div class="sum-row"><span>Time</span><strong id="sum-time">—</strong></div>
+        <div class="sum-row sum-total"><span>Total</span><strong id="sum-price">€35</strong></div>
+      </div>
+
+      <button class="submit-btn" onclick="submitBooking()">Confirm Booking Request →</button>
+      <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.75rem;text-align:center;">
+        No payment taken now. John will confirm your slot and arrange payment directly.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-label">What students say</div>
+  <div class="section-title" style="color:white;">Real reviews from real students</div>
+  <p class="section-sub">John has helped over 2,000 drivers across Kerry build the skills and confidence to pass their test.</p>
+  <div class="testimonials-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"John is a fantastic instructor! He was very thorough, professional and easy to work with. At the end of each lesson, he gave important tips on what areas to focus on — and I passed first time!"</p>
+      <div class="testi-name">Katie C.</div>
+      <div class="testi-detail">Tralee · Passed first attempt</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"John excels in getting you regimented to pass the test and is observant to the slightest mistake that could cause a fault. His attention to detail and willingness to help is nothing short of admirable."</p>
+      <div class="testi-name">James M.</div>
+      <div class="testi-detail">Tralee · Highly recommended</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"I can't recommend John enough. He made me feel calm and confident in my driving — something I really struggled with. I wouldn't have been able to pass without his help."</p>
+      <div class="testi-name">Katie J.</div>
+      <div class="testi-detail">Tralee · Anxious learner, now confident driver</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get in touch</div>
+  <div class="section-title">Always happy to answer questions</div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p class="section-sub" style="margin-bottom:2rem;">
+        Not sure if you're ready to book? Give John a call or drop him a message below — he'll help you figure out the right starting point.
+      </p>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-label">Phone / Text</div>
+          <div class="contact-value"><a href="tel:0871307075">087 130 7075</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Location</div>
+          <div class="contact-value">28/29 Upper Castle Street,<br>Cloonalour, Tralee, Co. Kerry</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <div class="contact-label">Available</div>
+          <div class="contact-value">Mon–Sat, 8am–7pm</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📘</div>
+        <div>
+          <div class="contact-label">Follow John</div>
+          <div class="contact-value">
+            <a href="https://www.facebook.com/JohnCarrollDrivingTralee/" target="_blank">Facebook</a> &nbsp;·&nbsp;
+            <a href="https://www.instagram.com/johncarrolldrivingschool/" target="_blank">Instagram</a>
+          </div>
+        </div>
+      </div>
+      <div class="map-placeholder">
+        <span style="font-size:2rem;">🗺️</span>
+        <p>Google Maps embed would go here</p>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h3>Send a quick message</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" placeholder="Your name" id="c-name"/>
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="tel" placeholder="087 ..." id="c-phone"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="your@email.com" id="c-email"/>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea style="min-height:120px;" placeholder="Hi John, I'm a complete beginner looking to start lessons..." id="c-msg"></textarea>
+      </div>
+      <button class="submit-btn" onclick="submitContact()">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">John Carroll Driving School</div>
+  <div class="footer-links">
+    <a href="#why">About</a>
+    <a href="#booking">Book</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 John Carroll · Tralee, Kerry</div>
+</footer>
+
+<!-- SUCCESS OVERLAY -->
+<div class="success-overlay" id="success-overlay">
+  <div class="success-modal">
+    <div class="success-icon">🎉</div>
+    <h2 id="success-title">Booking request sent!</h2>
+    <p id="success-msg">Thanks! John will be in touch within a few hours to confirm your slot. You'll receive a text to 087 130 7075.</p>
+    <button onclick="closeSuccess()">Back to site</button>
+  </div>
+</div>
+
+<script>
+  // ── CALENDAR ──
+  let currentDate = new Date(2026, 5, 1); // June 2026
+  let selectedCalDay = null;
+  let selectedLesson = { name: 'Standard EDT Lesson', price: '€35' };
+  let selectedTimeSlot = null;
+
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const days = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+
+  function renderCalendar() {
+    const grid = document.getElementById('cal-grid');
+    document.getElementById('cal-title').textContent = months[currentDate.getMonth()] + ' ' + currentDate.getFullYear();
+    grid.innerHTML = '';
+
+    days.forEach(d => {
+      const el = document.createElement('div');
+      el.className = 'cal-day-label';
+      el.textContent = d;
+      grid.appendChild(el);
+    });
+
+    const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).getDay();
+    const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth()+1, 0).getDate();
+    const today = new Date();
+
+    for (let i = 0; i < firstDay; i++) {
+      const el = document.createElement('div');
+      el.className = 'cal-day empty';
+      grid.appendChild(el);
+    }
+
+    for (let d = 1; d <= daysInMonth; d++) {
+      const el = document.createElement('div');
+      el.className = 'cal-day';
+      el.textContent = d;
+      const thisDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), d);
+      if (thisDate < today && thisDate.toDateString() !== today.toDateString()) {
+        el.classList.add('past');
+      } else {
+        el.classList.add('available');
+        if (thisDate.toDateString() === today.toDateString()) el.classList.add('today');
+        if (selectedCalDay === d && currentDate.getMonth() === new Date().getMonth()) {
+          el.classList.add('selected');
+        }
+        el.onclick = () => selectDay(el, d);
+      }
+      grid.appendChild(el);
+    }
+  }
+
+  function selectDay(el, d) {
+    document.querySelectorAll('.cal-day').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedCalDay = d;
+    const dateStr = d + ' ' + months[currentDate.getMonth()] + ' ' + currentDate.getFullYear();
+    document.getElementById('sum-date').textContent = dateStr;
+  }
+
+  function changeMonth(dir) {
+    currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + dir, 1);
+    selectedCalDay = null;
+    document.getElementById('sum-date').textContent = '—';
+    renderCalendar();
+  }
+
+  function selectTime(el) {
+    document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+    el.classList.add('selected');
+    document.getElementById('sum-time').textContent = el.textContent;
+  }
+
+  function selectLesson(el, price) {
+    document.querySelectorAll('.lesson-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    const name = el.querySelector('.lesson-name').textContent;
+    document.getElementById('sum-type').textContent = name;
+    document.getElementById('sum-price').textContent = price;
+  }
+
+  // ── BOOKING SUBMIT ──
+  function submitBooking() {
+    const fname = document.getElementById('fname').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const email = document.getElementById('email').value.trim();
+    if (!fname || !phone || !email) {
+      alert('Please fill in your name, phone, and email to continue.');
+      return;
+    }
+    document.getElementById('success-title').textContent = 'Booking request sent!';
+    document.getElementById('success-msg').textContent = 'Thanks ' + fname + '! John will be in touch within a few hours to confirm your lesson. Check your phone for a text.';
+    document.getElementById('success-overlay').classList.add('show');
+  }
+
+  // ── CONTACT SUBMIT ──
+  function submitContact() {
+    const name = document.getElementById('c-name').value.trim();
+    const msg = document.getElementById('c-msg').value.trim();
+    if (!name || !msg) {
+      alert('Please enter your name and message.');
+      return;
+    }
+    document.getElementById('success-title').textContent = 'Message sent!';
+    document.getElementById('success-msg').textContent = 'Thanks ' + name + '! John will get back to you as soon as possible — usually within the same day.';
+    document.getElementById('success-overlay').classList.add('show');
+  }
+
+  function closeSuccess() {
+    document.getElementById('success-overlay').classList.remove('show');
+  }
+
+  // Init
+  renderCalendar();
+</script>
+</body>
+</html>
